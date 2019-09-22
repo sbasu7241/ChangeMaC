@@ -1,11 +1,16 @@
 #!/usr/bin/env/python
 import subprocess
+from optparse import OptionParser
 
-interface = "wlo1"
-new_mac = "00:11:22:33:44:55"
+parser = OptionParser()
 
-interface = input("interface > ")
-new_mac = input("new MAC > ")
+parser.add_option("-i","--interface",dest="interface",help="Inteface to change MAC Address")
+parser.add_option("-m","--mac",dest="new_mac",help="New MAC Address")
+
+(options,arguments) = parser.parse_args()
+
+interface = options.interface
+new_mac = options.new_mac
 
 print("[+] Changing MAC address for "+interface+" to "+ new_mac)
 
